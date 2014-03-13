@@ -1,0 +1,45 @@
+Cycle Carousel Silverstripe Module
+=========================================
+
+
+Introduction
+------------
+
+This module is a simple carousel module that uses Cycle2 JQuery plugin by malsup.
+To know more about the Cycle2 visit http://jquery.malsup.com/cycle2/
+
+
+Installation
+------------
+
+After downloading, copy this module to your project folder and do a /dev/build?flush=all.
+
+You can also use composer to add this module to your project using the following:
+
+composer require "skTzoOoTech/cycle-carousel:*"
+
+
+How to use the module
+---------------------
+
+The module requires JQuery so you need to add jquery to your Page_Controller class.  
+Make sure JQuery isn't added by any other module or else it might not work properly. 
+To add jquery to your Page_Controller class, add the following to the init method (see example below) :
+
+```php
+	public function init() {
+		parent::init();
+		
+    Requirements::javascript(FRAMEWORK_DIR.'/thirdparty/jquery/jquery.min.js');
+    
+  }  
+```
+
+You can display the carousel to any of your templates.  For example if you want to add the carousel to
+your Layout/Page.ss file, add the following to the template:
+
+```php
+
+  $CycleCarouselObject
+
+```
