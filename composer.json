@@ -1,5 +1,5 @@
 {
-        "name": "skTzoOoTech/cycle-carousel",
+        "name": "sktzoootech/cycle-carousel",
         "description": "Cycle Carousel is a simple SilverStripe module. The modules uses Cycle2 JQuery Plugin by malsup.",
         "type": "silverstripe-module",
         "license": "BSD-3-Clause",
