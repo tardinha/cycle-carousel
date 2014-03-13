@@ -1,0 +1,8 @@
+Name: cycle-carousel-extensions
+---
+Page:
+  extensions:
+    - CycleCarouselPageExtension
+Page_Controller:
+  extensions:
+    - CycleCarouselPage_ControllerExtension

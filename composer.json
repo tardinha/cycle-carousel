@@ -1,0 +1,20 @@
+{
+        "name": "skTzoOoTech/cycle-carousel",
+        "description": "Cycle Carousel is a simple SilverStripe module. The modules uses Cycle2 JQuery Plugin by malsup.",
+        "type": "silverstripe-module",
+        "license": "BSD-3-Clause",
+        "keywords": ["silverstripe", "cycle-carousel", "carousel", "jquery"],
+        "authors": [
+                {
+                        "name": "Davis Dimalen",
+                        "email": "davis.dimalen@gmail.com"
+                }
+        ],
+        "require":
+        {
+                "silverstripe/framework": "~3.1",
+                "silverstripe/cms": "~3.1",
+                "ajshort/silverstripe-gridfieldextensions": "*",
+                "skTzoOoTech/link-field": "*"
+        }
+}
