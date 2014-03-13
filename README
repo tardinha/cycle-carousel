@@ -1,7 +1,6 @@
 Cycle Carousel Silverstripe Module
 =========================================
 
-
 Introduction
 ------------
 
@@ -27,12 +26,14 @@ Make sure JQuery isn't added by any other module or else it might not work prope
 To add jquery to your Page_Controller class, add the following to the init method (see example below) :
 
 ```php
+
 	public function init() {
 		parent::init();
 		
     Requirements::javascript(FRAMEWORK_DIR.'/thirdparty/jquery/jquery.min.js');
     
-  }  
+  }
+
 ```
 
 You can display the carousel to any of your templates.  For example if you want to add the carousel to
