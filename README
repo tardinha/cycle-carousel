@@ -7,7 +7,6 @@ Introduction
 This module is a simple carousel module that uses Cycle2 JQuery plugin by malsup.
 To know more about the Cycle2 visit http://jquery.malsup.com/cycle2/
 
-
 Installation
 ------------
 
@@ -44,3 +43,6 @@ your Layout/Page.ss file, add the following to the template:
   $CycleCarouselObject
 
 ```
+There are heaps of configuration you can apply to the carousel.  All can be set in the template by putting specific
+"data-cycle" value. If you wish to customize the template, copy the CarouselTemplate.ss file to your themes template/Include folder.
+Follow the documentation found in http://jquery.malsup.com/cycle2/
