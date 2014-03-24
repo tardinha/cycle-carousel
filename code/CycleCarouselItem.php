@@ -12,7 +12,8 @@ class CycleCarouselItem extends DataObject {
 		"Title" => 'Varchar(200)',
 		"TextDescription" => 'Varchar(200)',
 		"HTMLDescription" => 'HTMLText',
-		"PageLink" => 'WTLink'
+		"PageLink" => 'WTLink',
+		"YouTubeID" => 'Varchar(200)'
 	);
 
 	private static $has_one = array(
@@ -42,7 +43,8 @@ class CycleCarouselItem extends DataObject {
 			TextareaField::create('TextDescription', _t("CyclceCarousel.TextDescription", "Description")),
 			HtmlEditorField::create('HTMLDescription', _t("CycleCarousel.HTMLDescription", "HTML Description")),
 			UploadField::create('CycleCarouselImage', _t("CycleCarousel.CycleCarouselImage", "Image")),
-			new WTLinkField("PageLink", _t("CycleCarousel.PageLink", "Link"))
+			TextField::create('YouTubeID', _t("CycleCarousel.YouTubeID", "YouTube ID")),
+			WTLinkField::create("PageLink", _t("CycleCarousel.PageLink", "Link"))
 		));
 
 		return $fields;
