@@ -50,6 +50,7 @@ class CycleCarouselPage_ControllerExtension extends Extension {
     Requirements::css(CYCLCE_CAROUSEL_DIR.'/css/cycle-carousel.css');
     Requirements::javascript(CYCLCE_CAROUSEL_DIR.'/javascript/jquery.cycle2.min.js');
     Requirements::javascript(CYCLCE_CAROUSEL_DIR.'/javascript/jquery.cycle2.carousel.min.js');
+    Requirements::javascript(CYCLCE_CAROUSEL_DIR.'/javascript/jquery.cycle2.swipe.min.js');
   }
 
 
