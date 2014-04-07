@@ -11,13 +11,14 @@ class CycleCarouselItem extends DataObject {
 	private static $db = array(
 		"Title" => 'Varchar(200)',
 		"TextDescription" => 'Varchar(200)',
-		"HTMLDescription" => 'HTMLText',
+		//"HTMLDescription" => 'HTMLText',
+		"YouTubeID" => 'Varchar(200)',
 		"PageLink" => 'WTLink',
-		"YouTubeID" => 'Varchar(200)'
 	);
 
 	private static $has_one = array(
-		"CycleCarouselImage" => 'Image'
+		"CycleCarouselImage" => 'Image',
+		"CycleCarouselFile" => 'File'
 	);
 
 	private static $belongs_many_many = array(
@@ -41,8 +42,9 @@ class CycleCarouselItem extends DataObject {
 		$fields->addFieldsToTab("Root.Main", array(
 			TextField::create('Title', _t("CycleCarousel.Title", "Title")),
 			TextareaField::create('TextDescription', _t("CyclceCarousel.TextDescription", "Description")),
-			HtmlEditorField::create('HTMLDescription', _t("CycleCarousel.HTMLDescription", "HTML Description")),
+			//HtmlEditorField::create('HTMLDescription', _t("CycleCarousel.HTMLDescription", "HTML Description")),
 			UploadField::create('CycleCarouselImage', _t("CycleCarousel.CycleCarouselImage", "Image")),
+			UploadField::create('CycleCarouselFile', _t("CycleCarousel.CycleCarouselFile", "File")),
 			TextField::create('YouTubeID', _t("CycleCarousel.YouTubeID", "YouTube ID")),
 			WTLinkField::create("PageLink", _t("CycleCarousel.PageLink", "Link"))
 		));
