@@ -8,8 +8,8 @@
 	>
     <div class="cycle-pager"></div>
 	<% loop $CarouselSlides %>
-		<% if CycleCarouselImage %>
-			$CycleCarouselImage.CroppedImage(960, 600)
+		<% if SlideImage %>
+			$SlideImage.CroppedImage(960, 300)
 		<% end_if %>
 	<% end_loop %>
 </div>

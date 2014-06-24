@@ -8,47 +8,65 @@
 
 class CycleCarouselItem extends DataObject {
 
-	private static $db = array(
-		"Title" => 'Varchar(200)',
-		"TextDescription" => 'Varchar(200)',
-		//"HTMLDescription" => 'HTMLText',
-		"YouTubeID" => 'Varchar(200)',
-		"PageLink" => 'WTLink',
-	);
+  private static $db = array(
+    "Title"           => 'Varchar(255)',
+    "TextDescription" => 'Varchar(255)'
+  );
 
-	private static $has_one = array(
-		"CycleCarouselImage" => 'Image',
-		"CycleCarouselFile" => 'File'
-	);
+  private static $has_one = array(
+    'CycleCarouselLink'   => 'Link',
+    'CycleCarouselVideo'  => 'VideoPage',
+    "CycleCarouselImage"  => 'Image',
+    "CycleCarouselFile"   => 'File'
+  );
 
-	private static $belongs_many_many = array(
-		"Pages" => 'Page'
-	);
+  private static $belongs_many_many = array(
+    "Pages" => 'Page'
+  );
 
-	private static $summary_fields = array(
-		"Title" => "Title",
-		"TextDescription" => 'TextDescription',
-		"PageLink" => 'PageLink',
-		"Thumbnail" => 'Thumbnail'
-	);
+  private static $summary_fields = array(
+    "Title"           => "Title",
+    "TextDescription" => 'TextDescription',
+    "Thumbnail"       => 'Thumbnail'
+  );
 
-	public function getThumbnail(){
-		return $this->CycleCarouselImage()->CMSThumbnail();
-	}
+  public function getThumbnail() {
+    if ($this->CycleCarouselVideo()->ID) {
+      return $this->CycleCarouselVideo()->getMediaThumb()->CMSThumbnail();
+    } else {
+      return $this->CycleCarouselImage()->CMSThumbnail();
+    }
+  }
 
-	public function getCMSFields(){
-		$fields = parent::getCMSFields();
+  public function getSlideImage() {
+    if ($this->CycleCarouselVideo()->ID) {
+      return $this->CycleCarouselVideo()->getMediaThumb();
+    } else {
+      return $this->CycleCarouselImage();
+    } 
+  }
 
-		$fields->addFieldsToTab("Root.Main", array(
-			TextField::create('Title', _t("CycleCarousel.Title", "Title")),
-			TextareaField::create('TextDescription', _t("CyclceCarousel.TextDescription", "Description")),
-			//HtmlEditorField::create('HTMLDescription', _t("CycleCarousel.HTMLDescription", "HTML Description")),
-			UploadField::create('CycleCarouselImage', _t("CycleCarousel.CycleCarouselImage", "Image")),
-			UploadField::create('CycleCarouselFile', _t("CycleCarousel.CycleCarouselFile", "File")),
-			TextField::create('YouTubeID', _t("CycleCarousel.YouTubeID", "YouTube ID")),
-			WTLinkField::create("PageLink", _t("CycleCarousel.PageLink", "Link"))
-		));
+  public function getCMSFields() {
+    $fields = parent::getCMSFields();
 
-		return $fields;
-	}
+    $fields->removeByName('Pages');
+
+    $fields->addFieldsToTab("Root.Main", array(
+        TextField::create('Title', _t("CycleCarousel.Title", "Title")),
+        TextareaField::create('TextDescription', _t("CyclceCarousel.TextDescription", "Description")),
+        LinkField::create('CycleCarouselLinkID', _t("CycleCarousel.CycleCarouselLink", "Link")),
+        DropdownField::create(
+          'CycleCarouselVideoID',
+          _t("CycleCarousel.CycleCarouselVideo", "Related Video"),
+          VideoPage::get()->map('ID', 'Title'))
+        ->setEmptyString('Please choose...'
+        ),
+        UploadField::create('CycleCarouselImage', _t("CycleCarousel.CycleCarouselImage", "Image"))->setFolderName('slides/images')->useMultisitesFolder(),
+        UploadField::create('CycleCarouselFile', _t("CycleCarousel.CycleCarouselFile", "File"))->setFolderName('slides/files')->useMultisitesFolder()
+      ));
+
+    return $fields;
+  }
+
+
 }
