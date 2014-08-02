@@ -31,7 +31,9 @@ class CycleCarouselItem extends DataObject {
   );
 
   public function getThumbnail() {
-    if ($this->CycleCarouselVideo()->ID) {
+    if ($this->CycleCarouselVideo()->ID && $this->CycleCarouselImage()->ID) {
+      return $this->CycleCarouselImage()->CMSThumbnail();
+    } else if ($this->CycleCarouselVideo()->ID) {
       return $this->CycleCarouselVideo()->getMediaThumb()->CMSThumbnail();
     } else {
       return $this->CycleCarouselImage()->CMSThumbnail();
